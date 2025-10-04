@@ -1,0 +1,19 @@
+version: 0.1
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+  pre_build:
+    commands:
+    - echo "Installing dependencies..."
+    - npm install -g serverless
+
+  build:
+    commands:
+    - sls deploy --stage dev
+
+  post_build:
+    commands:
+    - echo "Updating resources..."
+    - echo "DONE"
