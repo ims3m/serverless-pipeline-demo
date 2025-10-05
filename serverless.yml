@@ -1,13 +1,18 @@
 service: ci-cd-demo
 
+custom:
+  stage: ${opt:stage, env:STAGE, 'dev'}
+  envFile: ${self:custom.stage, 'dev'}
+  config: ${file(./env/env_${self:custom.envFile}.yml)}
+
 provider:
   name: aws
   runtime: python3.11
   memorySize: 256
-  region: ${file(./env/env_dev.yml):region}
-  stage: ${file(./env/env_dev.yml):stage}
+  region: ${self:custom.config.region}
+  stage: ${self:custom.config.stage}
   deploymentBucket:
-    name: ci-cd-deployment-bucket
+    name: ci-cd-deployment-bucket-${self:custom.config.stage}
     serverSideEncryption: AES256
 
 functions:

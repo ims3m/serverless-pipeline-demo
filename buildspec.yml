@@ -1,20 +1,26 @@
 version: 0.2
 
+env:
+  variables:
+    STAGE: dev
+
 phases:
   install:
     runtime-versions:
       python: 3.11
+      nodejs: 18
 
   pre_build:
     commands:
-    - echo "Installing dependencies..."
+    - echo "Installing Serverless CLI..."
     - npm install -g serverless@3
+    - echo "Stage set to: $STAGE"
 
   build:
     commands:
-    - sls deploy --stage dev
+    - sls deploy --stage $STAGE
 
   post_build:
     commands:
-    - echo "Updating resources..."
+    - echo "Deployment to $STAGE complete."
     - echo "DONE"
