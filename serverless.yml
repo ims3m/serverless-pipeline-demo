@@ -6,6 +6,9 @@ provider:
   memorySize: 256
   region: ${file(./env/env_dev.yml):region}
   stage: ${file(./env/env_dev.yml):stage}
+  deploymentBucket:
+    name: ci-cd-deployment-bucket
+    serverSideEncryption: AES256
 
 functions:
   serviceDemo:
