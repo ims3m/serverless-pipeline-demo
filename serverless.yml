@@ -4,8 +4,8 @@ provider:
   name: aws
   runtime: python3.11
   memorySize: 256
-  region: ${file(./env_config/env_dev.yml):region}
-  stage: ${file(./env_config/env_dev.yml):stage}
+  region: ${file(./env/env_dev.yml):region}
+  stage: ${file(./env/env_dev.yml):stage}
 
 functions:
   serviceDemo:
