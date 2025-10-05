@@ -1,4 +1,4 @@
-service: serviceDemo
+service: ci-cd-demo
 
 provider:
   name: aws

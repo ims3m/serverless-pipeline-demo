@@ -8,7 +8,7 @@ phases:
   pre_build:
     commands:
     - echo "Installing dependencies..."
-    - npm install -g serverless@latest
+    - npm install -g serverless@3
 
   build:
     commands:
